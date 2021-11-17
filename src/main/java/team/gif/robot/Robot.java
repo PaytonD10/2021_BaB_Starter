@@ -1,8 +1,15 @@
 
 package team.gif.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import team.gif.robot.commands.CIMJoystickCommand;
+import team.gif.robot.subsystems.LimitSwitch;
+import team.gif.robot.subsystems.NEO;
+import team.gif.robot.subsystems.drivers.Pigeon;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -10,10 +17,13 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * the package after creating this project, you must also update the build.gradle file in the
  * project.
  */
+
+
 public class Robot extends TimedRobot {
 
   public static OI oi;
-
+  public static Command CIMCommand = null;
+  public static WPI_TalonSRX CIMTalon = null;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -22,7 +32,11 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     System.out.println("robot init");
+    CIMTalon = new WPI_TalonSRX(RobotMap.MOTOR_TALON_ONE);
+    Pigeon pigeon = new Pigeon(CIMTalon);
     // autonomous chooser on the dashboard.
+    Pigeon.getInstance().addToShuffleboard("Pigeon");
+    CIMCommand = new CIMJoystickCommand();
 
   }
 
@@ -37,6 +51,15 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
 
     CommandScheduler.getInstance().run();
+
+    System.out.println("Limit Switch State:" + LimitSwitch.getInstance().getState());
+    System.out.println("Yaw:" + Pigeon.getInstance().getCompassHeading());
+
+    //Smart Dashboard
+    SmartDashboard.putBoolean("Limit Switch", LimitSwitch.getInstance().getState());
+    NEO.getInstance().getVelocity_Shuffleboard();
+
+
 
   }
 
@@ -67,6 +90,8 @@ public class Robot extends TimedRobot {
     System.out.println("teleop init");
 
     oi = new OI();
+    CIMCommand.schedule();
+
   }
 
   @Override
