@@ -1,10 +1,13 @@
 package team.gif.robot.subsystems;
 
-import com.revrobotics.*;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+
 import team.gif.robot.Constants;
 import team.gif.robot.Robot;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.revrobotics.*;
 import team.gif.robot.RobotMap;
+
 
 public class NEO extends SubsystemBase {
     private static NEO instance = null;
@@ -32,6 +35,7 @@ public class NEO extends SubsystemBase {
 
         NEOPIDController.setOutputRange(0, 1);
     }
+
     public void setVoltage(double voltage) {
         NEO.setVoltage(voltage);
     }

@@ -10,7 +10,9 @@ import team.gif.robot.RobotMap;
 public class CIM extends SubsystemBase {
     private static CIM instance = null;
 
+
     // creates a singleton class (only 1 instance can be instantiated)
+
     public static CIM getInstance() {
         if (instance == null) {
             instance = new CIM();
@@ -22,6 +24,7 @@ public class CIM extends SubsystemBase {
     public CIM(){
         CIM.setNeutralMode(NeutralMode.Brake);
     }
+
 
     public void setSpeed(double speed){
         CIM.set(ControlMode.PercentOutput, speed);
