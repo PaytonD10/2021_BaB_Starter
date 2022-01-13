@@ -17,4 +17,8 @@ public abstract class RobotMap {
 
     // ** DIO ports **
     public static final int DEVICE_ID = 0;
-}
+    public static final int LIMIT_ID = 0;
+    public static final int LIMIT_SWITCH = 0;
+
+    }
+

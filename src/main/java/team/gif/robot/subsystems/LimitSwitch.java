@@ -5,6 +5,7 @@ import team.gif.robot.RobotMap;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 
+
 public class LimitSwitch extends SubsystemBase {
     private static LimitSwitch instance = null;
 
