@@ -7,9 +7,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.robot.commands.CIMJoystickCommand;
+import team.gif.robot.commands.NEOShooter;
 import team.gif.robot.subsystems.LimitSwitch;
-import team.gif.robot.subsystems.NEO;
 import team.gif.robot.subsystems.drivers.Pigeon;
+
+
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -28,6 +30,7 @@ public class Robot extends TimedRobot {
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
+
   @Override
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
@@ -57,7 +60,7 @@ public class Robot extends TimedRobot {
 
     //Smart Dashboard
     SmartDashboard.putBoolean("Limit Switch", LimitSwitch.getInstance().getState());
-    NEO.getInstance().getVelocity_Shuffleboard();
+    NEOShooter.getInstance().getVelocity_Shuffleboard();
 
 
 

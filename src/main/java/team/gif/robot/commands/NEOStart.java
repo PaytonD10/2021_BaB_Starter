@@ -3,14 +3,16 @@ package team.gif.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import team.gif.robot.Globals;
 
-public class NEOCommand extends CommandBase
+public class NEOStart extends CommandBase
 {
+
     @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
-    public NEOCommand()
+    public NEOStart()
     {
 
     }
+
     // Called when the command is initially scheduled.
     @Override
     public void initialize()
@@ -20,28 +22,24 @@ public class NEOCommand extends CommandBase
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
-    public void execute() {
-        NEOShooter.getInstance().setVoltage(2.5);
-        Globals.g_buttonControl = true;
-    }
-
-    static NEOShooter getInstance()
+    public void execute()
     {
-        return null;
+        NEOShooter.getInstance().setRPM(60);
     }
 
-
-    // Returns true when the command should end.
     @Override
-    public boolean isFinished() {
+    public boolean isFinished()
+    {
         return false;
     }
 
-    // Called once the command ends or is interrupted.
+    // Returns true when the command is about to end.
+    // Should be called once the command ends.
     @Override
     public void end(boolean interrupted)
     {
-        NEOShooter.getInstance().setVoltage(0);
+        NEOShooter.getInstance().setRPM(0);
         Globals.g_buttonControl = false;
     }
 }
+

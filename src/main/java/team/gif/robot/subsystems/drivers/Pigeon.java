@@ -34,9 +34,6 @@ public class Pigeon {
     }
 
     // Adds a compass widget to the Shuffleboard with basic parameters on the "SmartDashboard" tab
-    // This code can also be used in other places to add the compass widget (e.g. from robot.java). Would
-    //      need to add a getCompassHeading method in that class which calls the getCompassHeading()
-    //      in this class in order for the ()->getCompassHeading call to work
     public void addToShuffleboard(String tabTitle) {
         // Puts a Gyro type widget on dashboard and assigns
         // the function getHeading_Shuffleboard

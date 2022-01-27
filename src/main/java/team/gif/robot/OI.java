@@ -58,14 +58,10 @@ public class OI {
     public final AxisButton aLT = new AxisButton(aux,2,.05);
 
     public OI() {
-        /*
-         * TODO: Define what each button does
-         *
-         * Examples:
-         * dLT.whenPressed(new CollectCommand());
-         * dRT.whileHeld(new EjectCommand());
-         *
-         */
+        dB.whenHeld(new CIMButton());
+        dX.whenHeld(new CIMButton2());
+        dY.whenHeld(new NEO());
+        dA.whenHeld(new NEOStart());
 
     }
 
