@@ -1,6 +1,7 @@
 package team.gif.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import team.gif.robot.subsystems.NEOShooter;
 
 
 public class NEOShooterVoltage extends CommandBase {

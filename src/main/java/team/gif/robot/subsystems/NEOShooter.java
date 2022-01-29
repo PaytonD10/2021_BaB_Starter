@@ -1,6 +1,7 @@
-package team.gif.robot.commands;
+package team.gif.robot.subsystems;
 
 
+import com.revrobotics.*;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import team.gif.robot.RobotMap;
 
@@ -18,7 +19,8 @@ public class NEOShooter extends SubsystemBase {
 
 
     private static final CANSparkMax NEO = new CANSparkMax(RobotMap.MOTOR_SPARKMAX_ONE, CANSparkMaxLowLevel.MotorType.kBrushless);
-    private static final CANPIDController NEOPIDController = NEOStart.getPIDController();
+    private static final CANEncoder NEOEncoder = NEO.getEncoder();
+    private static final CANPIDController NEOPIDController = NEO.getPIDController();
 
     int stallMaxAmps = 40;
 
@@ -29,7 +31,7 @@ public class NEOShooter extends SubsystemBase {
         NEO.setIdleMode(CANSparkMax.IdleMode.kCoast);
         NEOPIDController.setP(0.00003);
         NEOPIDController.setFF(0.00030);
-        NEOPIDController.setSmartCurrentLimit(stallMaxAmps,stallMaxAmps);
+        NEO.setSmartCurrentLimit(stallMaxAmps,stallMaxAmps);
         NEOPIDController.setOutputRange(0, 1);
 
     }
